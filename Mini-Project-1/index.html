@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOLO-SAMIR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <p class="logo">SOLO </p>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="about" class="section about">
+      <div class="about-box">
+        <div class="about-text">
+          <h1>Hi, I'm Samir.</h1>
+          <p>
+            I'm a Computer Science &amp; Engineering student at IIUC, still
+            early in my degree and building my foundations in earnest.
+            Outside of coursework I train on competitive programming
+            problems and I'm working through a Linux and Python based
+            path toward cybersecurity.
+          </p>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+        <div class="about-image">
+          <img src="images/ok me.jpg" alt="Portrait placeholder for SOLO" width="815" height="1112">
+          <!-- <p class="caption">SOLO - BSc CSE, IIUC</p> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>C++</li>
+        <li>Object-Oriented Programming</li>
+        <li>Python</li>
+        <li>Linux</li>
+        <li>SQL</li>
+        <li>Networking</li>
+        <li>Competitive Programming</li>
+        <li>Git &amp; GitHub</li>
+      </ul>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <div class="project-card">
+          <h2>
+            <a href="https://github.com/Samir-Ali88/gtk-c-chat"> GTK Chat System Using C/C++</a>
+          </h2>
+          <p class="stack">C / GTK 3/4 / File Handling / TCP Sockets / Multithreading / Linux/Unix networking APIs</p>
+          <p>
+            GTK C Chat is a lightweight real-time chat application built with C and GTK. The project follows a
+            client-server architecture where multiple clients communicate through a centralized server using TCP
+            sockets. It includes a GTK-based graphical interface, multithreading for handling concurrent connections,
+            and a dedicated database module for persistent storage of chat history and user data. The project helped me
+            gain practical experience with socket programming, GUI development, client-server architecture,
+            multithreading, and modular C programming.
+
+          </p>
+        </div>
+        <div class="project-card">
+          <h2>
+            <a
+              href="https://github.com/Samir-Ali88/Networking-Project/blob/main/project/multithreaded_port_scanner.py">
+            Multi-Threaded
+            Port Scanner</a>
+          </h2>
+          <p class="stack">Python / TCP/IP / Socket Programming / Multithreading / Network Reconnaissance / Thread
+            Synchronization </p>
+          <p>
+            Multi-Threaded Port Scanner — Built a Python TCP port scanner using 20 concurrent threads, thread-safe
+            task queues, socket timeouts, and basic banner grabbing to efficiently identify open ports and services.
+            Implemented concurrent task distribution and synchronization to improve scanning efficiency while
+            maintaining reliable and organized output.
+            Gained hands-on experience with socket programming, network reconnaissance, exception handling, and
+            concurrent programming in Python.
+
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>
+        Email me directly at
+        <a href="samirali.tech88@gmail.com">samirali.tech@gmail.com</a>,
+        or send a note using the form below.
+      </p>
+
+      <form class="contact-form" action="#" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send message</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>SOLO</p>
+    <p>&copy; 2026 Samir ALi. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>
