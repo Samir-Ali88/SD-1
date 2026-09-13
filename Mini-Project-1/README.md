@@ -3,7 +3,7 @@
 A responsive personal portfolio website built with HTML5 and CSS3, developed to showcase academic background, technical skills, and personal projects.
 
 ## Overview
-
+## Page link : https://samir-ali88.github.io/SD-1/Mini-Project-1/
 This project is a single-page personal portfolio for **Samir Ali (SOLO)**, a Computer Science & Engineering student at the International Islamic University Chittagong (IIUC). The site presents an introduction, a list of technical skills, featured projects with descriptions and source links, and a contact section with a working form layout.
 
 ## Features
