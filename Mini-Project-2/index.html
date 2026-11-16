@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOLO-SAMIR</title>
+
+ 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#12181a',
+            panel: '#1a2226',
+            line: '#29343a',
+            cream: '#ece7db',
+            amber: { DEFAULT: '#db800a', soft: '#e0a458', dark: '#b87736' },
+            sage: '#6e9b8b',
+            muted: '#93a39b'
+          },
+          fontFamily: {
+            mono: ['"Courier New"', 'monospace'],
+            sans: ['Arial', 'Helvetica', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-ink text-cream font-sans leading-relaxed">
+
+  <!-- Navigation bar -->
+  <header class="sticky top-0 z-50 bg-ink/95 backdrop-blur border-b border-line">
+    <div class="max-w-4xl mx-auto flex items-center justify-between px-5 py-4">
+      <a href="#about" class="font-mono text-lg text-cream">SOLO</a>
+
+      <!-- Desktop menu -->
+      <nav class="hidden md:block">
+        <ul class="flex gap-6">
+          <li><a href="#about" class="nav-link hover:text-amber-soft transition-colors">About</a></li>
+          <li><a href="#skills" class="nav-link hover:text-amber-soft transition-colors">Skills</a></li>
+          <li><a href="#projects" class="nav-link hover:text-amber-soft transition-colors">Projects</a></li>
+          <li><a href="#contact" class="nav-link hover:text-amber-soft transition-colors">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile menu button (interactive element) -->
+      <button id="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false"
+        class="md:hidden font-mono border border-line rounded px-3 py-1 hover:border-amber hover:text-amber-soft transition-colors">
+        Menu
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <nav id="mobile-menu" class="hidden md:hidden border-t border-line">
+      <ul class="flex flex-col text-center">
+        <li><a href="#about" class="block py-3 hover:bg-panel hover:text-amber-soft">About</a></li>
+        <li><a href="#skills" class="block py-3 hover:bg-panel hover:text-amber-soft">Skills</a></li>
+        <li><a href="#projects" class="block py-3 hover:bg-panel hover:text-amber-soft">Projects</a></li>
+        <li><a href="#contact" class="block py-3 hover:bg-panel hover:text-amber-soft">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- About -->
+    <section id="about" class="max-w-4xl mx-auto px-5 py-12 scroll-mt-16">
+      <div class="flex flex-col-reverse md:flex-row items-center gap-8 text-center md:text-left">
+        <div class="md:flex-1">
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Hi, I'm <span class="text-amber-soft">Samir.</span></h1>
+          <p class="mb-6 text-cream/90">
+            I'm a Computer Science &amp; Engineering student at IIUC, still
+            early in my degree and building my foundations in earnest.
+            Outside of coursework I train on competitive programming
+            problems and I'm working through a Linux and Python based
+            path toward cybersecurity.
+          </p>
+          <a href="#contact"
+            class="inline-block font-mono bg-amber text-ink px-5 py-2.5 rounded hover:bg-sage hover:-translate-y-0.5 transition-all duration-200">
+            Get in touch
+          </a>
+        </div>
+        <div class="md:flex-none">
+          <img src="images/ok%20me.jpg" alt="Portrait of Samir" width="815" height="1112"
+            class="w-56 h-56 object-cover rounded border-2 border-line hover:border-amber hover:scale-105 transition-all duration-300">
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="max-w-4xl mx-auto px-5 py-12 scroll-mt-16">
+      <h2 class="text-3xl font-bold mb-6">Skills</h2>
+      <ul class="flex flex-wrap gap-3">
+        <li class="font-mono bg-panel border border-line rounded px-4 py-2.5 transition-all duration-200 hover:border-amber hover:text-amber-soft hover:-translate-y-0.5 cursor-default">C++</li>
+        <li class="font-mono bg-panel border border-line rounded px-4 py-2.5 transition-all duration-200 hover:border-amber hover:text-amber-soft hover:-translate-y-0.5 cursor-default">Object-Oriented Programming</li>
+        <li class="font-mono bg-panel border border-line rounded px-4 py-2.5 transition-all duration-200 hover:border-amber hover:text-amber-soft hover:-translate-y-0.5 cursor-default">Python</li>
+        <li class="font-mono bg-panel border border-line rounded px-4 py-2.5 transition-all duration-200 hover:border-amber hover:text-amber-soft hover:-translate-y-0.5 cursor-default">Linux</li>
+        <li class="font-mono bg-panel border border-line rounded px-4 py-2.5 transition-all duration-200 hover:border-amber hover:text-amber-soft hover:-translate-y-0.5 cursor-default">SQL</li>
+        <li class="font-mono bg-panel border border-line rounded px-4 py-2.5 transition-all duration-200 hover:border-amber hover:text-amber-soft hover:-translate-y-0.5 cursor-default">Networking</li>
+        <li class="font-mono bg-panel border border-line rounded px-4 py-2.5 transition-all duration-200 hover:border-amber hover:text-amber-soft hover:-translate-y-0.5 cursor-default">Competitive Programming</li>
+        <li class="font-mono bg-panel border border-line rounded px-4 py-2.5 transition-all duration-200 hover:border-amber hover:text-amber-soft hover:-translate-y-0.5 cursor-default">Git &amp; GitHub</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="max-w-4xl mx-auto px-5 py-12 scroll-mt-16">
+      <h2 class="text-3xl font-bold mb-6">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <article class="bg-panel border border-line rounded p-5 hover:border-amber hover:-translate-y-1 transition-all duration-200">
+          <h3 class="text-xl font-semibold mb-2">
+            <a class="text-amber-dark hover:text-amber-soft underline"
+              href="https://github.com/Samir-Ali88/gtk-c-chat">GTK Chat System Using C/C++</a>
+          </h3>
+          <p class="font-mono text-sm text-sage mb-3">C / GTK 3/4 / File Handling / TCP Sockets / Multithreading / Linux/Unix networking APIs</p>
+          <p class="text-sm text-cream/90">
+            GTK C Chat is a lightweight real-time chat application built with C and GTK. The project follows a
+            client-server architecture where multiple clients communicate through a centralized server using TCP
+            sockets. It includes a GTK-based graphical interface, multithreading for handling concurrent connections,
+            and a dedicated database module for persistent storage of chat history and user data. The project helped me
+            gain practical experience with socket programming, GUI development, client-server architecture,
+            multithreading, and modular C programming.
+          </p>
+        </article>
+
+        <article class="bg-panel border border-line rounded p-5 hover:border-amber hover:-translate-y-1 transition-all duration-200">
+          <h3 class="text-xl font-semibold mb-2">
+            <a class="text-amber-dark hover:text-amber-soft underline"
+              href="https://github.com/Samir-Ali88/Networking-Project/blob/main/project/multithreaded_port_scanner.py">Multi-Threaded Port Scanner</a>
+          </h3>
+          <p class="font-mono text-sm text-sage mb-3">Python / TCP/IP / Socket Programming / Multithreading / Network Reconnaissance / Thread Synchronization</p>
+          <p class="text-sm text-cream/90">
+            Built a Python TCP port scanner using 20 concurrent threads, thread-safe
+            task queues, socket timeouts, and basic banner grabbing to efficiently identify open ports and services.
+            Implemented concurrent task distribution and synchronization to improve scanning efficiency while
+            maintaining reliable and organized output. Gained hands-on experience with socket programming, network
+            reconnaissance, exception handling, and concurrent programming in Python.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="max-w-4xl mx-auto px-5 py-12 scroll-mt-16">
+      <h2 class="text-3xl font-bold mb-4">Contact</h2>
+      <p>
+        Email me directly at
+        <a class="text-amber-dark hover:text-amber-soft underline" href="mailto:samirali.tech88@gmail.com">samirali.tech88@gmail.com</a>,
+        or send a note using the form below.
+      </p>
+
+      <form id="contact-form" class="flex flex-col gap-4 max-w-md mt-6" action="#" method="post">
+        <div class="flex flex-col gap-1">
+          <label for="name" class="font-mono text-sm text-muted">Name</label>
+          <input type="text" id="name" name="name" required
+            class="bg-panel border border-line rounded p-2.5 text-cream focus:outline-none focus:border-amber transition-colors">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="email" class="font-mono text-sm text-muted">Email</label>
+          <input type="email" id="email" name="email" required
+            class="bg-panel border border-line rounded p-2.5 text-cream focus:outline-none focus:border-amber transition-colors">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="message" class="font-mono text-sm text-muted">Message</label>
+          <textarea id="message" name="message" rows="5" required
+            class="bg-panel border border-line rounded p-2.5 text-cream focus:outline-none focus:border-amber transition-colors"></textarea>
+        </div>
+        <button type="submit"
+          class="font-mono bg-amber text-ink px-5 py-2.5 rounded hover:bg-sage transition-colors">
+          Send message
+        </button>
+        <p id="form-status" class="hidden text-sage font-mono text-sm"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-line py-8 text-center text-muted text-sm">
+    <p>SOLO</p>
+    <p>&copy; 2026 Samir Ali. All rights reserved.</p>
+  </footer>
+
+  <script>
+   
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', open);
+      btn.textContent = open ? 'Close' : 'Menu';
+    });
+    menu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        btn.textContent = 'Menu';
+        btn.setAttribute('aria-expanded', 'false');
+      })
+    );
+
+    // Contact form feedback 
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      status.textContent = 'Thanks, ' + e.target.name.value + '! Your message was captured (demo form).';
+      status.classList.remove('hidden');
+      e.target.reset();
+    });
+  </script>
+
+</body>
+
+</html>
