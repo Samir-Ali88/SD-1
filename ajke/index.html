@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Performance Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white p-5">
+
+    <div class="max-w-3xl mx-auto bg-gray-800 p-6 rounded-xl">
+
+        <h1 class="text-2xl font-bold text-center text-green-400 mb-6">Student Performance Calculator</h1>
+
+        <form id="form" class="space-y-3">
+            <input id="name" placeholder="Student name" class="w-full bg-gray-700 p-3 rounded" required>
+
+            <div class="grid grid-cols-3 gap-3">
+                <input id="math" type="number" min="0" max="100" placeholder="Math" class="bg-gray-700 p-3 rounded" required>
+                <input id="english" type="number" min="0" max="100" placeholder="English" class="bg-gray-700 p-3 rounded" required>
+                <input id="physics" type="number" min="0" max="100" placeholder="Physics" class="bg-gray-700 p-3 rounded" required>
+            </div>
+
+            <button class="w-full bg-green-600 hover:bg-green-700 py-3 rounded">Add Student</button>
+        </form>
+
+        <table class="w-full text-center mt-6">
+            <thead class="bg-green-600">
+                <tr>
+                    <th class="p-2">Name</th>
+                    <th>Math</th>
+                    <th>English</th>
+                    <th>Physics</th>
+                    <th>Average</th>
+                </tr>
+            </thead>
+            <tbody id="list"></tbody>
+        </table>
+
+        <p id="total" class="mt-4 text-gray-400">Total Students: 0</p>
+
+    </div>
+
+    <script>
+        let students = [];
+
+        document.getElementById("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let math = Number(document.getElementById("math").value);
+            let english = Number(document.getElementById("english").value);
+            let physics = Number(document.getElementById("physics").value);
+            let average = (math + english + physics) / 3;
+
+            students.push({ name, math, english, physics, average });
+
+            // Sort highest to lowest average
+            students.sort((a, b) => b.average - a.average);
+
+            // Show all students
+            let rows = "";
+            for (let s of students) {
+                rows += `
+                <tr class="border-b border-gray-700">
+                    <td class="p-2">${s.name}</td>
+                    <td>${s.math}</td>
+                    <td>${s.english}</td>
+                    <td>${s.physics}</td>
+                    <td>${s.average.toFixed(2)}</td>
+                </tr>`;
+            }
+            document.getElementById("list").innerHTML = rows;
+
+            document.getElementById("total").textContent = "Total Students: " + students.length;
+
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
