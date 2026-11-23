@@ -1,48 +1,33 @@
-# DevBoard — Study & Project Hub (React + Vite + shadcn/ui)
+# SOLO - React TO-DO List
 
-A modern, visually polished web app built for tomorrow's class challenge using **Vite**, **React**, **Tailwind CSS**, and **shadcn/ui**.
+**Live Demo:** https://samir-ali88.github.io/SD-1/Todo-Live/
 
-## How to Run Locally
+A simple task manager I built using React, Vite, Tailwind CSS, and shadcn/ui. It tracks daily tasks, shows completion progress, and saves data both in the browser and via local JSON backup files.
+
+## What It Does
+
+- **Task Management:** Add tasks with categories (`Frontend`, `React Hooks`, `Git & Deploy`, `Presentation`), mark them complete, or delete them.
+- **Progress Tracking:** Displays total tasks, pending count, and a completion percentage bar at the top.
+- **Filter & Search:** Filter by `All`, `Pending`, or `Completed`, or search by keyword.
+- **Task Details Page:** Clicking **Inspect** opens a separate route for that specific task using React Router.
+- **Save & Backup Options:**
+  - Auto-saves everything to `localStorage` so tasks stay after refreshing or closing the browser.
+  - **Backup / Restore buttons:** Export tasks to a `.json` file on your PC and import them back anytime if browser data gets cleared.
+
+## Tech & Hooks Used
+
+- React + Vite + Tailwind CSS + shadcn/ui
+- React Router (`BrowserRouter`)
+- `useState`, `useEffect`, `useNavigate`, and `useRef`
+
+## Folder Layout
+
+- `React-Todo/` — React source code
+- `Todo-Live/` — Built static files deployed to GitHub Pages
+
+## Run Locally
 
 ```bash
+cd React-Todo
 npm install
 npm run dev
-```
-
-## Presentation Cheat Sheet (How Each Requirement Is Used)
-
-### 1. `useState`
-- **Dashboard (`src/pages/Dashboard.jsx`)**:
-  - `projects`: Holds the list of study projects/tasks.
-  - `search`: Controls the live search filter input.
-  - `filter`: Tracks the active category tab (`"All"`, `"Pending"`, `"Completed"`).
-  - `title` & `category`: Control the new task creation form inputs.
-- **Quotes/Tip Banner (`src/pages/Dashboard.jsx`)**:
-  - `tip` & `loadingTip`: Store the developer tip fetched when the component loads or refreshes.
-
-### 2. `useEffect`
-- **Auto-Save to `localStorage`**: Runs whenever `projects` changes (`[projects]`) so your items persist even after refreshing the page.
-- **Fetch Data on Mount**: Runs once on page load (`[]`) to simulate fetching a live "Daily Coding Tip" banner (great example of `useEffect` for side effects / API calls).
-
-### 3. `useNavigate`
-- **Dashboard → Project Details**: Clicking **"Inspect"** calls `navigate(\`/project/${item.id}\`)` to jump to the dynamic details page without reloading.
-- **Project Details → Dashboard**: Clicking **"Back to Dashboard"** calls `navigate("/")`.
-
-### 4. `shadcn/ui` Components Included
-- `Card` (`CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`)
-- `Button` (multiple variants: `default`, `secondary`, `outline`, `ghost`, `destructive`)
-- `Input`
-- `Badge`
-- `Progress` (visual completion bar)
-- `Tabs` (`TabsList`, `TabsTrigger`)
-
-## Push to GitHub
-
-```bash
-git init
-git add .
-git commit -m "Build DevBoard React + Vite + shadcn/ui app"
-git branch -M main
-git remote add origin <YOUR_GITHUB_REPO_URL>
-git push -u origin main
-```
