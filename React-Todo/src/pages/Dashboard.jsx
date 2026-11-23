@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import {
   Plus,
@@ -10,6 +10,8 @@ import {
   Layers,
   ListChecks,
   Clock,
+  Download,
+  Upload,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -65,6 +67,7 @@ export default function Dashboard() {
   const [category, setCategory] = useState("Frontend")
   const [search, setSearch] = useState("")
   const [filter, setFilter] = useState("All")
+  const fileInputRef = useRef(null)
 
   // 3. useNavigate: Programmatic navigation to the Project Details route
   const navigate = useNavigate()
@@ -101,6 +104,40 @@ export default function Dashboard() {
 
   const deleteProject = (id) => {
     setProjects(projects.filter((item) => item.id !== id))
+  }
+
+  // Export tasks as a downloadable JSON backup file
+  const handleExport = () => {
+    const dataStr = JSON.stringify(projects, null, 2)
+    const blob = new Blob([dataStr], { type: "application/json" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.href = url
+    link.download = `solo-todo-backup-${new Date().toISOString().slice(0, 10)}.json`
+    link.click()
+    URL.revokeObjectURL(url)
+  }
+
+  // Import tasks from a saved JSON backup file
+  const handleImport = (e) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      try {
+        const imported = JSON.parse(event.target.result)
+        if (Array.isArray(imported)) {
+          setProjects(imported)
+        } else {
+          alert("Invalid backup file format.")
+        }
+      } catch {
+        alert("Could not read JSON file.")
+      }
+    }
+    reader.readAsText(file)
+    e.target.value = ""
   }
 
   // Stats calculations
@@ -223,8 +260,8 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* Filter & Search Bar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        {/* Filter, Search & Backup Bar */}
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
           <TabsList>
             {["All", "Pending", "Completed"].map((tab) => (
               <TabsTrigger
@@ -237,13 +274,35 @@ export default function Dashboard() {
             ))}
           </TabsList>
 
-          <div className="relative w-full sm:w-64">
-            <Search className="w-4 h-4 absolute left-3 top-2.5 text-muted-foreground" />
-            <Input
-              placeholder="Search tasks or tags..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="pl-9 bg-white"
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="relative flex-1 sm:w-56">
+              <Search className="w-4 h-4 absolute left-3 top-2.5 text-muted-foreground" />
+              <Input
+                placeholder="Search tasks..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-9 bg-white"
+              />
+            </div>
+
+            <Button type="button" variant="outline" size="sm" onClick={handleExport}>
+              <Download className="w-4 h-4 mr-1.5" /> Backup
+            </Button>
+
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <Upload className="w-4 h-4 mr-1.5" /> Restore
+            </Button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".json"
+              onChange={handleImport}
+              className="hidden"
             />
           </div>
         </div>
@@ -331,7 +390,7 @@ export default function Dashboard() {
       <footer className="border-t bg-white/80 backdrop-blur-md mt-8">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
           <div>
-            <p className="text-sm font-semibold text-foreground">Imam Samir Ali</p>
+            <p className="text-sm font-semibold text-foreground">Samir Ali</p>
             <p className="text-xs text-muted-foreground">
               CS student exploring React, web development, algorithms &amp; problem solving.
             </p>
