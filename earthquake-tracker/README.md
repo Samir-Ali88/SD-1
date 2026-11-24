@@ -1,5 +1,5 @@
 # Earthquake Tracker (CSE-2340 MP3-MP4)
-
+#Deployment Link: https://samir-ali88.github.io/SD-1/earthquake-tracker/
 An interactive, API-driven web application built with **HTML, CSS, and Vanilla JavaScript** that tracks live global seismic events using the **USGS Earthquake Hazards Program API**.
 
 ## Features Implemented (Assignment Requirements)
