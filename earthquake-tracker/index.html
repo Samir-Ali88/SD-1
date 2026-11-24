@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Earthquake Tracker | Live USGS Monitor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="brand">
+        <span class="pulse-dot"></span>
+        <h1>Earthquake Tracker</h1>
+      </div>
+      <div class="nav-actions">
+        <button id="refreshBtn" class="btn btn-primary" title="Fetch latest seismic data">
+          Refresh Data
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-layout">
+    <!-- Summary Stats Bar -->
+    <section class="stats-grid" aria-label="Earthquake Statistics">
+      <div class="stat-card">
+        <span class="stat-label">Total Events</span>
+        <strong id="totalCount" class="stat-value">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Strongest Magnitude</span>
+        <strong id="maxMag" class="stat-value">0.0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Saved / Bookmarked</span>
+        <strong id="savedCount" class="stat-value">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Last Updated</span>
+        <strong id="lastUpdated" class="stat-value text-sm">--:--:--</strong>
+      </div>
+    </section>
+
+    <!-- Controls & Filters -->
+    <section class="controls-panel">
+      <div class="control-group search-group">
+        <label for="searchInput">Search Location</label>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="e.g., Japan, California, Alaska, Chile..."
+        />
+      </div>
+
+      <div class="control-group">
+        <label for="timeRangeSelect">Time Window</label>
+        <select id="timeRangeSelect">
+          <option value="all_day" selected>Past 24 Hours</option>
+          <option value="all_hour">Past 1 Hour</option>
+          <option value="all_week">Past 7 Days</option>
+          <option value="significant_month">Significant (30 Days)</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="magFilterSelect">Min Magnitude</label>
+        <select id="magFilterSelect">
+          <option value="0" selected>All Magnitudes (0.0+)</option>
+          <option value="2.5">2.5+ (Minor)</option>
+          <option value="4.0">4.0+ (Light)</option>
+          <option value="5.0">5.0+ (Moderate)</option>
+          <option value="6.0">6.0+ (Strong)</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="sortSelect">Sort By</label>
+        <select id="sortSelect">
+          <option value="time-desc" selected>Newest First</option>
+          <option value="mag-desc">Highest Magnitude</option>
+          <option value="mag-asc">Lowest Magnitude</option>
+        </select>
+      </div>
+
+      <div class="control-group toggle-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="savedOnlyToggle" />
+          <span>Show Saved Only</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Content Split: Earthquake List + Details & Bookmarks Sidebar -->
+    <div class="content-grid">
+      <!-- Left Column: Live Feed -->
+      <section class="feed-section">
+        <div class="section-header">
+          <h2>Live Seismic Activity</h2>
+          <span id="showingCount" class="badge">Showing 0 events</span>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="state-box hidden">
+          <div class="spinner"></div>
+          <p>Fetching live earthquake data from USGS...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="state-box error-box hidden">
+          <p id="errorMessage">Unable to load earthquake data.</p>
+          <button id="retryBtn" class="btn btn-secondary">Try Again</button>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="state-box hidden">
+          <p>No earthquakes match your current search or filter criteria.</p>
+          <button id="resetFiltersBtn" class="btn btn-secondary">Reset Filters</button>
+        </div>
+
+        <!-- Dynamic Cards Container -->
+        <div id="earthquakeList" class="quake-list"></div>
+      </section>
+
+      <!-- Right Column: Selected Detail + Saved Watchlist -->
+      <aside class="sidebar">
+        <!-- Selected Event Details -->
+        <div class="panel-card" id="detailPanel">
+          <div class="panel-header">
+            <h3>Event Details</h3>
+          </div>
+          <div id="detailContent" class="detail-body">
+            <p class="muted-text">Click any earthquake card on the left to inspect depth, coordinates, tsunami alert status, and USGS report link.</p>
+          </div>
+        </div>
+
+        <!-- LocalStorage Saved Earthquakes -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <h3>Saved Watchlist</h3>
+            <button id="clearSavedBtn" class="btn-text" title="Remove all saved items">Clear All</button>
+          </div>
+          <div id="savedList" class="saved-list">
+            <p class="muted-text">No bookmarked earthquakes yet. Click "Save" on any event to store it in Local Storage.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Data powered by <strong>USGS Earthquake Hazards Program API</strong> &bull; CSE-2340 Software Development I (MP3-MP4)</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
